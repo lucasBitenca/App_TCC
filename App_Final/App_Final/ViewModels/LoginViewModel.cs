@@ -33,12 +33,6 @@ namespace App_Final.ViewModels
         {
             LoginCommand = new Command(OnLogin, ValidarAutenticacao);
         }
-
-        private async void OnLoginClicked(object obj)
-        {
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            
-        }
         private async void OnLogin()
         {
             Login novoLogin = new Login()

@@ -1,4 +1,5 @@
 ﻿using App_Final.Views;
+using App_Final.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,7 +19,11 @@ namespace App_Final.ViewModels
             get => usuario;
             set => SetProperty(ref usuario, value);
         }
-
+        private bool ValidarAutenticacao()
+        {
+            return !String.IsNullOrWhiteSpace(usuario)
+                && !String.IsNullOrWhiteSpace(senha);
+        }
         public string Senha
         {
             get => senha;
@@ -26,13 +31,31 @@ namespace App_Final.ViewModels
         }
         public LoginViewModel()
         {
-            LoginCommand = new Command(OnLoginClicked);
+            LoginCommand = new Command(OnLogin, ValidarAutenticacao);
         }
 
         private async void OnLoginClicked(object obj)
         {
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+            
+        }
+        private async void OnLogin()
+        {
+            Login novoLogin = new Login()
+            {
+                Usuario = Usuario,
+                Senha = Senha
+            };
+
+            if (await DataStore.GetItemAsync(novoLogin.Usuario) != null)
+            {
+                Console.WriteLine("Encontrou o usuario.");
+                await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+            }
+            else
+            {
+                Console.WriteLine("Não encontrou o usuario.");
+            }
         }
     }
 }

@@ -8,5 +8,7 @@ namespace App_Final.Models
     {
         public string Usuario { get; set; }
         public string Senha { get; set; }
+
+        public string Classificacao { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace App_Final.ViewModels
 
         private string usuario;
         private string senha;
+        private string classificacao;
         public Command LoginCommand { get; }
 
         public string Usuario
@@ -29,6 +30,11 @@ namespace App_Final.ViewModels
             get => senha;
             set => SetProperty(ref senha, value);
         }
+        public string Classificacao
+        {
+            get => classificacao;
+            set => SetProperty(ref classificacao, value);
+        }
         public LoginViewModel()
         {
             LoginCommand = new Command(OnLogin, ValidarAutenticacao);
@@ -38,7 +44,8 @@ namespace App_Final.ViewModels
             Login novoLogin = new Login()
             {
                 Usuario = Usuario,
-                Senha = Senha
+                Senha = Senha,
+                Classificacao = Classificacao
             };
 
             if (await DataStore.GetItemAsync(novoLogin.Usuario) != null)

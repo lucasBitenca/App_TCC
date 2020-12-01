@@ -11,7 +11,7 @@
             <Label Text="Usuário" FontSize="Medium" />
             <Entry Text="{Binding Usuario, Mode=TwoWay}" FontSize="Medium" />
             <Label Text="Senha" FontSize="Medium" />
-            <Entry x:Name="passwordBox" Width="200" PasswordChar="*" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Entry x:Name="passwordBox" Width="200" FontSize="Medium" Margin="0" />
             <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
         </StackLayout>
     </ContentPage.Content>

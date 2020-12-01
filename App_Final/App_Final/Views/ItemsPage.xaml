@@ -12,9 +12,25 @@
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
       https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
     -->
-    <StackLayout>
-        <!--Loading label should not render by default.-->
-        <Label x:Name="labelLoading" Text="Loading..." IsVisible="false" />
-        <WebView HeightRequest="1000" WidthRequest="1000" Source="http://104.41.11.135:1880" Navigated="webviewNavigated" Navigating="webviewNavigating" />
-    </StackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+                <Button Margin="0,10,0,0" Text="Saiba mais"
+                        Command="{Binding AbrirHome}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
+            </StackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

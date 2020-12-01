@@ -17,8 +17,9 @@ namespace App_Final.ViewModels
         public HomeModel()
         {
             Title = "Home";
-            var browser = new Command(async () => await Browser.OpenAsync("http://104.41.11.135:1880/ui/"));
+            AbrirHome = new Command(async () => await Browser.OpenAsync("http://104.41.11.135:1880/ui/"));
         }
+        public ICommand AbrirHome { get; }
 
     }
 }

@@ -20,14 +20,5 @@ namespace App_Final.Views
             InitializeComponent();
         }
 
-        void webviewNavigating(object sender, WebNavigatingEventArgs e)
-        {
-            labelLoading.IsVisible = true;
-        }
-
-        void webviewNavigated(object sender, WebNavigatedEventArgs e)
-        {
-            labelLoading.IsVisible = false;
-        }
     }
 }
